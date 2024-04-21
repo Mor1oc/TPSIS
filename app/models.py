@@ -3,6 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, Table, String, Integer, Boolean, DateTime, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from app.database.base import Base
+from app.enums.order_status import OrderStatus
 
 
 class Client(Base):
@@ -68,9 +69,9 @@ class Order(Base):
     __tablename__ = 'orders'
     id = Column(Integer, primary_key=True, index=True)
     quantity = Column(Integer, nullable=False)
-    order_date = Column(DateTime, nullable=False)
-    delivery_date = Column(DateTime, default=datetime.utcnow)
-    status_order = Column(String, nullable=False)
+    order_date = Column(DateTime, default=datetime.utcnow)
+    delivery_date = Column(DateTime, default=None)
+    status_order = Column(String, default=OrderStatus.new.value)
     new_order = Column(Boolean, default=True)
     distance = Column(Float, nullable=False)
     client_id = Column(Integer, ForeignKey('clients.id'))

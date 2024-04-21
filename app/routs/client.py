@@ -1,6 +1,6 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from starlette.responses import FileResponse
-from app.database.order import orders_by_id
+from app.database.order import orders_by_id, create_order
 
 router = APIRouter(
     prefix="/client",
@@ -13,6 +13,18 @@ def user_orders():
     return FileResponse("templates/client.html")
 
 
-@router.get('/api/orders/{user_id}')
-def all_user_orders(user_id: int):
-    return orders_by_id(user_id)
+@router.get('/api/orders/{client_id}')
+def get_all_user_orders(client_id: int):
+    orders = orders_by_id(client_id)
+    if orders:
+        return orders_by_id(client_id)
+    return {"message": "У вас нет заказов"}
+
+
+@router.post('/api/orders/create')
+def create_new_order(new_order: dict):
+    order = create_order(new_order)
+    if order:
+        return order
+    else:
+        return {"message": "Не получилось создать заказ"}

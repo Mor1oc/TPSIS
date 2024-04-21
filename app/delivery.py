@@ -1,4 +1,4 @@
-from app.database.order import all_carriers
+from app.database.carrier import all_carriers
 
 
 def select_carrier(order_data):
