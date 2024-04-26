@@ -69,7 +69,7 @@ class Order(Base):
     __tablename__ = 'orders'
     id = Column(Integer, primary_key=True, index=True)
     quantity = Column(Integer, nullable=False)
-    order_date = Column(DateTime, default=datetime.utcnow)
+    order_date = Column(DateTime, default=None)
     delivery_date = Column(DateTime, default=None)
     status_order = Column(String, default=OrderStatus.new.value)
     new_order = Column(Boolean, default=True)

@@ -5,7 +5,6 @@ from app.routs.client import router as rout_client
 from app.routs.logist import router as rout_logist
 from app.routs.warehouse import router as rout_warehouse
 
-Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()

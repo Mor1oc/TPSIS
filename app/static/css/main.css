@@ -1,0 +1,29 @@
+
+.back {
+    box-sizing: border-box;
+    background: #CCE3DE;
+}
+
+.display {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 10px;
+    top: 14px;
+
+    background: #EAF4F4;
+    border: 3px solid #6B9080;
+    border-radius: 26px;
+}
+
+.menu {
+    position: absolute;
+    left: 104px;
+    top: 10px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 44px;
+}
+
